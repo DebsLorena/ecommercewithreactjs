@@ -6,13 +6,7 @@ import { Link } from "react-router-dom";
 const Container = styled.div`
     width: 100vw;
     height: 100vh;
-    background: linear-gradient(
-    rgba(255, 255, 255, 0.5),
-    rgba(255, 255, 255, 0.5)
-    ),
-    url("https://www.graf-von-faber-castell.com.br/-/media/Graf-von-Faber-Castell/e-com/special-pages/gift-finder/for-her/stage-image-for-her-yozakura.ashx?mw=1280&hash=D7CAC84F93B1A7DBB4684793AF3022BF09EAFAF5")
-    center;
-    background-size: cover;
+    background: linear-gradient(to right, #62C39D,#49ADBD, #7372B4, #A457B6, #CD3BCF);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -32,6 +26,7 @@ const Title = styled.h1`
     display: flex;
     align-items: center;
     justify-content: center;
+    color: #3b3b3b;
 `;
 
 const Form = styled.form`
@@ -62,7 +57,6 @@ const Links = styled.div`
     display: flex;
     align-items: center;
     justify-content: center;
-    color: gray !important;
 `;
 const Linka = styled.a`
     margin: 10px 10px;
@@ -72,7 +66,7 @@ const Linka = styled.a`
     display: flex;
     align-items: center;
     justify-content: center;
-    color: gray !important;
+    color: #3b3b3b !important;
 `;
 
 const Login = () => {

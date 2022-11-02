@@ -1,16 +1,18 @@
 import React from 'react';
 import styled from 'styled-components';
-import ImagePapelaria from "../img/about.jpg"
+import logo from "../img/logo-pink.png"
 
 const Container = styled.div`
     width: 100%;
-    height: 500px;
+    padding: 60px 0px;
+    height: auto;
     background: rgba(164,87,182,0.1);
     display: flex;
+    flex-wrap: wrap;
+    position: relative;
 `;
 const Wrapper = styled.div`
-    flex: 1;
-    padding: 80px;
+    width: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -36,6 +38,7 @@ const Title = styled.div`
     `;
 
 const Text = styled.p`
+    width: 60%;
     color: gray;
     font-size: 16px; 
     font-weight: 600; 
@@ -59,9 +62,24 @@ const Buttom = styled.div`
     };
 `;
 
+const Logo = styled.p`
+    position: absolute;
+    font-family: 'Style Script', cursive;
+    font-size: 200px;
+    height: auto;
+    color: #A457B6;
+    left: 150px;
+    top: -50px;
+    opacity: 0.2;
+    `;
+
 const Img = styled.img`
-    Flex: 1;
-    padding: 50px;
+    position: absolute;
+    width: 350px;
+    height: auto;
+    right: 150px;
+    bottom: -150px;
+    opacity: 0.2;
     `;
 
 
@@ -69,6 +87,7 @@ const Img = styled.img`
 const About = () => {
     return (
         <Container>
+            <Logo>Enjoy</Logo>
             <Wrapper>
             <SubTitle>Um pouquinho da nossa História</SubTitle>
             <Title>Sobre nós</Title>
@@ -76,7 +95,7 @@ const About = () => {
             <Text>Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old.There are many variations passages Lorem Ipsum variatio passages Lorem available, but the majority suffered alteration. </Text>
             <Buttom>Comprar Agora</Buttom>
             </Wrapper>
-            <Img src={ImagePapelaria} alt="logo-enjoy"></Img>
+            <Img src={logo} alt="logo-enjoy"></Img>
         </Container>
     )
 }

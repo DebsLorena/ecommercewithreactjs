@@ -40,7 +40,7 @@ const Notfound = () => {
             <Navbar />
             <Info>
                 <h2>404 Error</h2>
-                <h1>Desculpe, Página não encontrada.</h1>
+                <h1>Desculpe, página não encontrada.</h1>
                 <Button>Voltar a página principal</Button>
             </Info>
 

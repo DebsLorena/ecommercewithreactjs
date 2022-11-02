@@ -5,7 +5,8 @@ import { mobile } from "../responsive";
 const Container = styled.div`
     flex: 1;
     margin: 3px;
-    height: 40vh;
+    min-width: 300px;
+    height: 250px;
     position: relative;
 `;
 

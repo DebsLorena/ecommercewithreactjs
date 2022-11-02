@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 
 const Container = styled.div`
     height: 70px;
-    background-image: linear-gradient(to right, #62C39D,#49ADBD, #7372B4, #A457B6, #CD3BCF);
+    background: linear-gradient(to right, #62C39D,#49ADBD, #7372B4, #A457B6, #CD3BCF);
     ${mobile({ height: "50px" })}
     
 `;

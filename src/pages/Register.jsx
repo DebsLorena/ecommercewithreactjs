@@ -7,13 +7,7 @@ import { Link } from "react-router-dom";
 const Container = styled.div`
     width: 100vw;
     height: 100vh;
-    background: linear-gradient(
-    rgba(255, 255, 255, 0.5),
-    rgba(255, 255, 255, 0.5)
-    ),
-    url("https://www.graf-von-faber-castell.com.br/-/media/Graf-von-Faber-Castell/e-com/limited-edition-overview/image-slider-wide-limited-editions-heritage-ottilie.ashx?la=pt-BR&h=691&w=1280&mw=1280&hash=3CC45A8272797CEFCF49371A7A1D08CAEDB86BDA")
-    center;
-    background-size: cover;
+    background: linear-gradient(to right, #62C39D,#49ADBD, #7372B4, #A457B6, #CD3BCF);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -33,6 +27,7 @@ const Title = styled.h1`
     display: flex;
     align-items: center;
     justify-content: center;
+    color: #3b3b3b;
 `;
 
 const Form = styled.form`
@@ -81,7 +76,7 @@ const Linka = styled.a`
     display: flex;
     align-items: center;
     justify-content: center;
-    color: gray !important;
+    color: #3b3b3b !important;
 `;
 
 const Register = () => {
@@ -92,6 +87,7 @@ const Register = () => {
                 <Form>
                     <Input placeholder="email" />
                     <Input placeholder="cpf" />
+                    <Input placeholder="nome completo" />
                     <Input placeholder="nome completo" />
 
                     <Input placeholder="endereço" />

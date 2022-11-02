@@ -1,9 +1,14 @@
-import React, { useState }  from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import styled from 'styled-components';
-import { ArrowLeftOutlined, ArrowRightOutlined } from '@material-ui/icons'
-import banner1 from '../img/banner1-removebg-preview.png';
-import banner2 from '../img/banner2-removebg-preview.png';
-import banner3 from '../img/banner3-removebg-preview.png';
+import { motion } from "framer-motion/dist/framer-motion";
+import image1 from '../img/insta/1.png';
+import image2 from '../img/insta/2.png';
+import image3 from '../img/insta/3.png';
+import image4 from '../img/insta/4.png';
+import image5 from '../img/insta/5.png';
+import image6 from '../img/insta/6.png';
+import image7 from '../img/insta/7.png';
+import image8 from '../img/insta/8.png';
 import { mobile } from "../responsive";
 
 const Container = styled.div`
@@ -14,23 +19,6 @@ const Container = styled.div`
     overflow: hidden;
     background: rgba(164,87,182,0.1);
 `;
-const Arrow = styled.div`
-    width: 50px;
-    height: 50px;
-    background-color: rgba(164,87,182,0.1);
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    position: absolute;
-    top: 190px;
-    left: ${props => props.direction === "left" && "10px"};
-    right: ${props => props.direction === "right" && "10px"};
-    
-    cursor: pointer;
-    opacity: 0.5;
-    z-index: 2;
-    `;
 
 
 const Section = styled.div`
@@ -52,61 +40,43 @@ const SubTitle = styled.div`
 `;
 
 const Wrapper = styled.div`
-    flex: 1;
     height: 40vh;
     top: 10px;
     gap: 10px;
     position: relative;
     display: flex;
-    justify-content: space-between;
+    cursor: grab;
+    img { pointer-events:none }
 `;
 
-const Image = styled.img`
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    background: white;
-    padding: 0px 10px;
-    border-radius: 4px;
-    cursor: pointer;
-    ${mobile({ height: "20vh" })}
-`;
-
-
-
+const image = [image1, image2, image3, image4, image5, image6, image7, image8]
 
 
 const PostInstagram = () => {
-/*não funciona verificar*/
-    const [postIndex, setPostIndex] = useState(0);
 
-    const handleClick = (direction) => {
+    const carousel = useRef();
+    const [width, setWidth] = useState(0)
 
-        if(direction === "left") {
-            setPostIndex(postIndex > 0 ? postIndex-1 : 5)
-        } else {
-            setPostIndex(postIndex < 5 ? postIndex+1 : 0)
-        }
-
-    };
-
+    useEffect(() => {
+        setWidth(carousel.current?.scrollWidth - carousel.current?.offsetWidth)
+    }, []);
 
     return (
         <Container>
-            <Arrow direction="left" onClick={() => handleClick("left")}>
-                <ArrowLeftOutlined />
-            </Arrow>
             <Section>Instagram</Section>
             <SubTitle>@enjoypaper&presentes</SubTitle>
-            <Wrapper>
-                <Image src={banner1} alt="img-insta"></Image>
-                <Image src={banner2} alt="post-insta"></Image>
-                <Image src={banner3} alt="post"></Image>
-                <Image src={banner1} alt="img-insta"></Image>
-            </Wrapper>
-            <Arrow direction="right" onClick={() => handleClick("right")}>
-                <ArrowRightOutlined />
-            </Arrow>
+            <motion.div ref={carousel} whileTop={{ cursor: "grabbing" }}>
+                <motion.div drag="x"
+                    dragConstraints={{ right: 0, left: -width }} >
+                        <Wrapper>
+                        {image.map(image => (
+                            <motion.div key={image}>
+                                <img src={image} alt="image insta" />
+                            </motion.div>
+                        ))}
+                    </Wrapper>
+                </motion.div>
+            </motion.div>
         </Container>
     );
 };

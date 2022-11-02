@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
-import monitorando from "../img/monitorando.png";
+import atendimento from "../img/atendimento.png";
 import moto from "../img/moto.png";
 import gift from "../img/gift.png";
 import desconto from "../img/desconto.png";
@@ -11,9 +11,10 @@ const Container = styled.div`
 
 const Wrapper = styled.div`
     background: white;
-    height: 80px;
+    height: auto;
     width: 100%;
     display: flex;
+    flex-wrap: wrap;
     align-items: center;
     justify-content: center;
 `;
@@ -41,8 +42,8 @@ const Bar = () => {
 return (
     <Container>
             <Wrapper>
-                <Icon src={monitorando} alt="logo-enjoy"></Icon>
-                <Text>Clique & Retire</Text>
+                <Icon src={atendimento} alt="logo-enjoy"></Icon>
+                <Text>Atendimento</Text>
                 <Icon src={moto} alt="logo-enjoy"></Icon>
                 <Text>Entrega Express</Text>
                 <Icon src={gift} alt="logo-enjoy"></Icon>

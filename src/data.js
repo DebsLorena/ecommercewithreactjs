@@ -28,34 +28,54 @@ export const sliderItems = [
 export const categories = [
     {
         id: 1,
-        img: "https://s7h8z5n2.rocketcdn.me/wp-content/uploads/2016/03/415.jpg",
-        title: "POST-ITS",
+        img: "https://i.imgur.com/iUNazgG.jpeg",
+        title: "NOVIDADES",
     },
     {
         id: 2,
-        img: "https://www.daninoce.com.br/wp-content/uploads/2017/12/as-10-melhores-lojas-de-papelaria-em-nova-iorque-dani-noce-imagem-destaque-960x625.jpg",
-        title: "PAPELARIA",
+        img: "https://i.imgur.com/cCU8kN8.jpeg",
+        title: "PERSONALIZADOS",
     },
     {
         id: 3,
-        img: "https://http2.mlstatic.com/D_NQ_NP_813268-MLB45539877557_042021-O.webp",
-        title: "PERSONALIZADOS",
+        img: "https://i.imgur.com/kszbH9p.jpeg",
+        title: "PAPELARIA",
     },{
         id: 4,
-        img: "https://ae01.alicdn.com/kf/Sb97d6defabb343d9871dbbd47496198dH/Kawaii-gel-caneta-casa-doces-pingente-assinatura-caneta-estudante-escrita-papelaria-tinta-preta-0-5mm-material.jpg_Q90.jpg_.webp",
+        img: "https://i.imgur.com/JU1TOmZ.jpeg",
         title: "ESCRITA",
     },{
         id: 5,
-        img: "https://http2.mlstatic.com/D_NQ_NP_813268-MLB45539877557_042021-O.webp",
-        title: "PERSONALIZADOS",
+        img: "https://i.imgur.com/I3yGtcu.jpeg",
+        title: "ORGANIZAÇÃO",
     },{
         id: 6,
-        img: "https://ae01.alicdn.com/kf/Sb97d6defabb343d9871dbbd47496198dH/Kawaii-gel-caneta-casa-doces-pingente-assinatura-caneta-estudante-escrita-papelaria-tinta-preta-0-5mm-material.jpg_Q90.jpg_.webp",
-        title: "ESCRITA",
+        img: "https://i.imgur.com/0U54jJS.jpeg",
+        title: "KITS",
     },{
         id: 7,
-        img: "https://ae01.alicdn.com/kf/Sb97d6defabb343d9871dbbd47496198dH/Kawaii-gel-caneta-casa-doces-pingente-assinatura-caneta-estudante-escrita-papelaria-tinta-preta-0-5mm-material.jpg_Q90.jpg_.webp",
+        img: "https://i.imgur.com/iePvlSz.jpeg",
+        title: "PROMOÇÃO",
+    },{
+        id: 8,
+        img: "https://i.imgur.com/kszbH9p.jpeg",
+        title: "PAPELARIA",
+    },{
+        id: 9,
+        img: "https://i.imgur.com/JU1TOmZ.jpeg",
         title: "ESCRITA",
+    },{
+        id: 10,
+        img: "https://i.imgur.com/I3yGtcu.jpeg",
+        title: "ORGANIZAÇÃO",
+    },{
+        id: 11,
+        img: "https://i.imgur.com/0U54jJS.jpeg",
+        title: "KITS",
+    },{
+        id: 12,
+        img: "https://i.imgur.com/iePvlSz.jpeg",
+        title: "PROMOÇÃO",
     },
 ];
 
@@ -104,6 +124,18 @@ export const popularProducts = [
     },
     {
         id: 8,
+        img: "https://i.imgur.com/Nm2PY0f.png",
+        desc: "Lorem Ipsum, giving information",
+        price: "R$ 29,90",
+    },
+    {
+        id: 9,
+        img: "https://i.imgur.com/80yXAHl.png",
+        desc: "Lorem Ipsum, giving information",
+        price: "R$ 29,90",
+    },
+    {
+        id: 10,
         img: "https://i.imgur.com/Nm2PY0f.png",
         desc: "Lorem Ipsum, giving information",
         price: "R$ 29,90",

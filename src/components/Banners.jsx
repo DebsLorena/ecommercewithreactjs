@@ -5,18 +5,25 @@ import  Banner from "../components/Banner";
 import { mobile } from "../responsive";
 
 const Container = styled.div`
-    display: flex;
     padding: 0px 20px 20px 20px;
-    justify-content: space-between;
     ${mobile({ padding: "0px", flexDirection:"column" })}
 `
+
+const Wrapper = styled.div`
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+`;
+
 
 const Banners = () => {
     return (
         <Container>
+            <Wrapper  >
             {banners.map((item) => (
                 <Banner item={item} Key={item.id}/>
             ))}
+            </Wrapper>
         </Container>
     )
 }

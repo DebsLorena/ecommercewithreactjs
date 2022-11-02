@@ -27,7 +27,7 @@ const Left = styled.div`
 `;
 
 const Right = styled.div`
-    flex: 2;
+    flex: 1;
     height: 100%;
     background: #ffffff;
     display: flex;
@@ -64,7 +64,7 @@ const Announcement = () => {
     return (
         <Container>
             <Left>
-                Frete Grátis para compras acima de R$500,00
+                Ao comprar nesta loja, você está ajudando o Hospital do Cancêr em Uberlândia.
             </Left>
             <Right>
                 <SocialContainer>

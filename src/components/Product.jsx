@@ -85,8 +85,8 @@ const Description = styled.div`
     left: 10px;
 `;
 const Price = styled.div`
-width: 30%;
-    font-size: 24px;
+    width: 33%;
+    font-size: 22px;
     font-weight: 700;
     color: white;
     text-shadow: 1px 1px rgba(0,0,0,0.5);

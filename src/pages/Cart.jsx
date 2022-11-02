@@ -4,6 +4,7 @@ import Announcement from "../components/Announcement";
 import Footer from "../components/Footer";
 import Navbar from "../components/Navbar";
 import { mobile } from "../responsive";
+import HospitaldoCancer from "../components/HospitaldoCancer"
 
 
 const Container = styled.div`
@@ -19,15 +20,15 @@ const Wrapper = styled.div`
 
 const Title = styled.h1`
     height: 100px;
-    color: white;
-    text-shadow: 1px 1px gray;
-    font-size: 48px;
+    background: linear-gradient(to right, #62C39D,#49ADBD, #7372B4, #A457B6, #CD3BCF);
+	background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+    font-size: 56px;
     font-weight: 1000;
     display: flex;
     align-items: center;
     justify-content: center;
-    background: rgba(164,87,182,0.1)
-    
 `;
 
 const Top = styled.div`
@@ -102,7 +103,7 @@ const ProductDetail = styled.div`
 `;
 
 const Image = styled.img`
-    width: 200px;
+    width: 150px;
 `;
 
 const Details = styled.div`
@@ -240,9 +241,9 @@ const Cart = () => {
                             </ProductDetail>
                             <PriceDetail>
                                 <ProductAmountContainer>
-                                    <Add />
-                                    <ProductAmount>2</ProductAmount>
                                     <Remove />
+                                    <ProductAmount>2</ProductAmount>
+                                    <Add />
                                 </ProductAmountContainer>
                                 <ProductPrice>R$ 89,90</ProductPrice>
                             </PriceDetail>
@@ -266,11 +267,37 @@ const Cart = () => {
                             </ProductDetail>
                             <PriceDetail>
                                 <ProductAmountContainer>
-                                    <Add />
-                                    <ProductAmount>1</ProductAmount>
                                     <Remove />
+                                    <ProductAmount>1</ProductAmount>
+                                    <Add />
                                 </ProductAmountContainer>
                                 <ProductPrice>R$ 19,90</ProductPrice>
+                            </PriceDetail>
+                        </Product>
+                        <Line></Line>
+                        <Product>
+                            <ProductDetail>
+                                <Image src="https://i.imgur.com/IYnjq5k.png" />
+                                <Details>
+                                    <ProductName>
+                                        <b>Produto:</b> Mochila Mickey
+                                    </ProductName>
+                                    <ProductId>
+                                        <b>ID:</b> 93813718293
+                                    </ProductId>
+                                    <ProductColor color="blue" />
+                                    {/* <ProductSize>
+                                        <b>Size:</b> 37.5
+                                    </ProductSize> */}
+                                </Details>
+                            </ProductDetail>
+                            <PriceDetail>
+                                <ProductAmountContainer>
+                                    <Remove />
+                                    <ProductAmount>2</ProductAmount>
+                                    <Add />
+                                </ProductAmountContainer>
+                                <ProductPrice>R$ 89,90</ProductPrice>
                             </PriceDetail>
                         </Product>
                     </Info>
@@ -299,6 +326,7 @@ const Cart = () => {
                     </Summary>
                 </Bottom>
             </Wrapper>
+            <HospitaldoCancer />
             <Footer />
         </Container>
     );

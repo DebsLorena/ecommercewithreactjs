@@ -12,9 +12,11 @@ const Container = styled.div`
 
 const Title = styled.h1`
     height: 100px;
-    color: white;
-    text-shadow: 1px 1px gray;
-    font-size: 48px;
+    background: linear-gradient(to right, #62C39D,#49ADBD, #7372B4, #A457B6, #CD3BCF);
+	background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+    font-size: 56px;
     font-weight: 1000;
     display: flex;
     align-items: center;
