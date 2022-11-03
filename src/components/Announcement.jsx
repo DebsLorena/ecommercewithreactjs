@@ -64,7 +64,7 @@ const Announcement = () => {
     return (
         <Container>
             <Left>
-                Ao comprar nesta loja, você está ajudando o Hospital do Cancêr em Uberlândia.
+                Ao comprar nesta loja, você está ajudando o Hospital do Câncer em Uberlândia.
             </Left>
             <Right>
                 <SocialContainer>
