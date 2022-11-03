@@ -11,6 +11,7 @@ const Container = styled.div`
     position: relative;
     overflow: hidden;
     color: #4e4e4e;
+    flex-wrap: wrap;
     ${mobile({ flexDirection: "column" })}
 `;
 

@@ -23,8 +23,8 @@ const Wrapper = styled.div`
 const Container = styled.div`
     flex: 1;
     margin: 5px;
-    min-width: 280px;
-    height: 350px;
+    min-width: 250px;
+    height: 290px;
     position: relative;
     display: flex;
     align-items: center;
@@ -37,8 +37,8 @@ const Container = styled.div`
 `;
 
 const Circle = styled.div`
-    width: 200px;
-    height: 200px;
+    width: 180px;
+    height: 180px;
     border-radius: 50%;
     background-color: white;
     position: absolute;
