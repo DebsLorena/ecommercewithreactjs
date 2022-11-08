@@ -1,6 +1,7 @@
-import React from 'react';
-import styled from 'styled-components';
-import logo from "../img/logo-pink.png"
+import React from "react";
+import styled from "styled-components";
+import logo from "../img/logo-pink.png";
+import { Link } from "react-router-dom";
 
 const Container = styled.div`
     width: 100%;
@@ -11,6 +12,7 @@ const Container = styled.div`
     flex-wrap: wrap;
     position: relative;
 `;
+
 const Wrapper = styled.div`
     width: 100%;
     display: flex;
@@ -18,6 +20,7 @@ const Wrapper = styled.div`
     align-items: center;
     justify-content: center;
 `;
+
 const SubTitle = styled.div`
     display: flex;
     align-items: center;
@@ -26,7 +29,7 @@ const SubTitle = styled.div`
     font-weight: 400;
     color: #A457B6;
     padding: 5px 0px;
-    `;
+`;
 
 const Title = styled.div`
     font-size: 24px;
@@ -35,7 +38,7 @@ const Title = styled.div`
     align-items: center;
     justify-content: center;
     padding: 10px;
-    `;
+`;
 
 const Text = styled.p`
     width: 60%;
@@ -71,7 +74,7 @@ const Logo = styled.p`
     left: 150px;
     top: -50px;
     opacity: 0.2;
-    `;
+`;
 
 const Img = styled.img`
     position: absolute;
@@ -80,20 +83,21 @@ const Img = styled.img`
     right: 150px;
     bottom: -150px;
     opacity: 0.2;
-    `;
+`;
 
 
 
 const About = () => {
+    
     return (
         <Container>
             <Logo>Enjoy</Logo>
             <Wrapper>
-            <SubTitle>Um pouquinho da nossa História</SubTitle>
-            <Title>Sobre nós</Title>
-            <Text>Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old.There are many variations passages Lorem Ipsum variatio passages Lorem available, but the majority suffered alteration.</Text>
-            <Text>Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old.There are many variations passages Lorem Ipsum variatio passages Lorem available, but the majority suffered alteration. </Text>
-            <Buttom>Comprar Agora</Buttom>
+                <SubTitle>Um pouquinho da nossa História</SubTitle>
+                <Title><Link to={"/terms"}>Sobre nós</Link></Title>
+                <Text>Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old.There are many variations passages Lorem Ipsum variatio passages Lorem available, but the majority suffered alteration.</Text>
+                <Text>Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old.There are many variations passages Lorem Ipsum variatio passages Lorem available, but the majority suffered alteration. </Text>
+                <Buttom><Link to={"/productList"}>Comprar Agora</Link></Buttom>
             </Wrapper>
             <Img src={logo} alt="logo-enjoy"></Img>
         </Container>

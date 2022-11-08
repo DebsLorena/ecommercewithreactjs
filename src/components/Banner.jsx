@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import { mobile } from "../responsive";
+import { Link } from "react-router-dom";
 
 const Container = styled.div`
     flex: 1;
@@ -15,7 +15,6 @@ const Image = styled.img`
     height: 100%;
     object-fit: cover;
     border-radius: 10px;
-    ${mobile({ height: "20vh" })}
 `;
 
 const Info = styled.div`
@@ -63,8 +62,8 @@ const Banner = ({item}) => {
                 <Image src={item.img}/>
                 <Info>
                     <Title>{item.title}</Title>
-                    <Button>Comprar Agora
-                        
+                    <Button>
+                        <Link to={`/product/${item._id}`}>Comprar Agora</Link>
                     </Button>
                 </Info>
         </Container>

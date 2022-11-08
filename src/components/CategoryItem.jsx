@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import { Link } from 'react-router-dom'
 
 const Container = styled.div`
     top: 10px;
@@ -61,7 +62,7 @@ const CategoryItem = ({item}) => {
             <Circle src={item.img}/>
                 <Info>
                     <Title>{item.title}</Title>
-                    <Button>Comprar Agora</Button>
+                    <Button><Link to={`/products/${item.cat}`}>Comprar Agora</Link></Button>
                 </Info>
         </Container>
     )

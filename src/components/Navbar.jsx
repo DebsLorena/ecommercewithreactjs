@@ -69,6 +69,7 @@ const MenuItem = styled.div`
 `;
 
 const Navbar = () => {
+    
     return (
         <Container>
             <Wrapper>
@@ -78,13 +79,13 @@ const Navbar = () => {
                 </Left>
                 
                 <Right>
-                    <MenuItem><Link to="/productlist">Novidades</Link></MenuItem>
-                    <MenuItem><Link to="/productlist">Personalizados</Link></MenuItem>
-                    <MenuItem><Link to="/productlist">Papelaria</Link></MenuItem>
-                    <MenuItem><Link to="/productlist">Escrita</Link></MenuItem>
-                    <MenuItem><Link to="/productlist">Organização</Link></MenuItem>
-                    <MenuItem><Link to="/productlist">Kits</Link></MenuItem>
-                    <MenuItem><Link to="/productlist" >Promoção</Link></MenuItem>
+                    <MenuItem><Link to="/products/novidades">Novidades</Link></MenuItem>
+                    <MenuItem><Link to="/products/personalizados">Personalizados</Link></MenuItem>
+                    <MenuItem><Link to="/products/papelaria">Papelaria</Link></MenuItem>
+                    <MenuItem><Link to="/products/escrita">Escrita</Link></MenuItem>
+                    <MenuItem><Link to="/products/organização">Organização</Link></MenuItem>
+                    <MenuItem><Link to="/products/kits">Kits</Link></MenuItem>
+                    <MenuItem><Link to="/products/promoção" >Promoção</Link></MenuItem>
                 </Right>
             </Wrapper>
         </Container>

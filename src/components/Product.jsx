@@ -103,13 +103,14 @@ const Price = styled.div`
 
 const Product = ({ item }) => {
     return (
+        
         <Container >
-            <Circle />
-            <Image src={item.img} />
+            <Circle><Link to={`/product/${item._id}`}></Link></Circle>
+            <Image src={item.img}/>
             <Wrapper>
                 <Info>
                     <Icon >
-                        <LocalMall />
+                        <Link to={`/product/${item._id}`}> <LocalMall/> </Link>                        
                     </Icon>
                     <Icon>
                         <Share />
@@ -118,8 +119,8 @@ const Product = ({ item }) => {
                         <FavoriteBorderOutlined />
                     </Icon>
                 </Info>
-                <Link to="/product"><Description >{item.desc}</Description></Link>
-                <Price>{item.price}</Price>
+                <Link to={`/product/${item._id}`}><Description >{item.desc}</Description></Link>
+                <Link to={`/product/${item._id}`}><Price>{item.price}</Price></Link>
             </Wrapper>
 
 

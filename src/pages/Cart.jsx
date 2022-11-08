@@ -4,7 +4,11 @@ import Announcement from "../components/Announcement";
 import Footer from "../components/Footer";
 import Navbar from "../components/Navbar";
 import { mobile } from "../responsive";
-import HospitaldoCancer from "../components/HospitaldoCancer"
+import HospitaldoCancer from "../components/HospitaldoCancer";
+import { useEffect, useState } from "react";
+import { useSelector } from "react-redux";
+import { userRequest } from "../requestMethods";
+import { useHistory } from "react-router";
 
 
 const Container = styled.div`
@@ -207,6 +211,8 @@ const Button = styled.button`
 `;
 
 const Cart = () => {
+
+    const cart = useSelector((state) => state.cart);
     return (
         <Container>
             <Announcement />
@@ -216,96 +222,46 @@ const Cart = () => {
                 <Top>
                     <TopButtonLeft>CONTINUE Comprando</TopButtonLeft>
                     <TopTexts>
-                        <TopText>Minhas Compras(2)</TopText>
+                        <TopText>Minhas Compras</TopText>
                         <TopText>Minha Lista(0)</TopText>
                     </TopTexts>
                     <TopButtonRight type="filled">Finalizar compras</TopButtonRight >
                 </Top>
                 <Bottom>
                     <Info>
+                    {cart.products.map((product) => (
                         <Product>
                             <ProductDetail>
-                                <Image src="https://i.imgur.com/IYnjq5k.png" />
+                                <Image src={product.img} />
                                 <Details>
                                     <ProductName>
-                                        <b>Produto:</b> Mochila Mickey
+                                        <b>Produto:</b> {product.title}
                                     </ProductName>
                                     <ProductId>
-                                        <b>ID:</b> 93813718293
+                                        <b>ID:</b>{product._id}
                                     </ProductId>
-                                    <ProductColor color="blue" />
-                                    {/* <ProductSize>
-                                        <b>Size:</b> 37.5
-                                    </ProductSize> */}
+                                    <ProductColor color={product.color} />
                                 </Details>
                             </ProductDetail>
                             <PriceDetail>
                                 <ProductAmountContainer>
                                     <Remove />
-                                    <ProductAmount>2</ProductAmount>
+                                    <ProductAmount>{product.quantity}</ProductAmount>
                                     <Add />
                                 </ProductAmountContainer>
-                                <ProductPrice>R$ 89,90</ProductPrice>
+                                <ProductPrice>
+                                    R$ {product.price * product.quantity}
+                                    </ProductPrice>
                             </PriceDetail>
                         </Product>
-                        <Line></Line>
-                        <Product>
-                            <ProductDetail>
-                                <Image src="https://i.imgur.com/GwUxTBi.png" />
-                                <Details>
-                                    <ProductName>
-                                        <b>Produto:</b> Estojo para canetas
-                                    </ProductName>
-                                    <ProductId>
-                                        <b>ID:</b> 93813718293
-                                    </ProductId>
-                                    <ProductColor color="blue" />
-                                    {/* <ProductSize>
-                                        <b>Size:</b> M
-                                    </ProductSize> */}
-                                </Details>
-                            </ProductDetail>
-                            <PriceDetail>
-                                <ProductAmountContainer>
-                                    <Remove />
-                                    <ProductAmount>1</ProductAmount>
-                                    <Add />
-                                </ProductAmountContainer>
-                                <ProductPrice>R$ 19,90</ProductPrice>
-                            </PriceDetail>
-                        </Product>
-                        <Line></Line>
-                        <Product>
-                            <ProductDetail>
-                                <Image src="https://i.imgur.com/IYnjq5k.png" />
-                                <Details>
-                                    <ProductName>
-                                        <b>Produto:</b> Mochila Mickey
-                                    </ProductName>
-                                    <ProductId>
-                                        <b>ID:</b> 93813718293
-                                    </ProductId>
-                                    <ProductColor color="blue" />
-                                    {/* <ProductSize>
-                                        <b>Size:</b> 37.5
-                                    </ProductSize> */}
-                                </Details>
-                            </ProductDetail>
-                            <PriceDetail>
-                                <ProductAmountContainer>
-                                    <Remove />
-                                    <ProductAmount>2</ProductAmount>
-                                    <Add />
-                                </ProductAmountContainer>
-                                <ProductPrice>R$ 89,90</ProductPrice>
-                            </PriceDetail>
-                        </Product>
+                    ))}
+                    <Line></Line>
                     </Info>
                     <Summary>
                         <SummaryTitle>Compras</SummaryTitle>
                         <SummaryItem>
                             <SummaryItemText>Subtotal</SummaryItemText>
-                            <SummaryItemPrice>R$ 80</SummaryItemPrice>
+                            <SummaryItemPrice>R$ {cart.total}</SummaryItemPrice>
                         </SummaryItem>
                         <Input placeholder="cep" />
                         <SummaryItem>
@@ -320,7 +276,7 @@ const Cart = () => {
                         </SummaryItem>
                         <SummaryItem type="total">
                             <SummaryItemText>Total</SummaryItemText>
-                            <SummaryItemPrice>R$ 80</SummaryItemPrice>
+                            <SummaryItemPrice>R$ {cart.total}</SummaryItemPrice>
                         </SummaryItem>
                         <Button>Finalizar compras</Button>
                     </Summary>

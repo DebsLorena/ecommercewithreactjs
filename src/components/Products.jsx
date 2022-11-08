@@ -1,8 +1,9 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
-import { popularProducts } from "../data.js";
 import Product from "./Product";
+import axios from "axios";
 import { Link } from "react-router-dom";
+
 
 
 const Container = styled.div`
@@ -14,26 +15,6 @@ const Wrapper = styled.div`
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
-`;
-
-const Section = styled.div`
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: white;
-    font-size: 16px;
-    font-weight: 400;
-    color: #A457B6;
-    `;
-
-const SubTitle = styled.div`
-display: flex;
-align-items: center;
-justify-content: center;
-background: white;
-font-size: 24px;
-color: #A457B6;
-padding: 5px 10px;
 `;
 
 const Button = styled.div`
@@ -54,19 +35,63 @@ const Button = styled.div`
 `;
 
 
-const Products = () => {
+const Products = ({ cat, filters, sort }) => {
+    const [products, setProducts] = useState([]);
+    const [filteredProducts, setFilteredProducts] = useState([]);
+
+    useEffect(() => {
+        const getProducts = async () => {
+            try {
+                const res = await axios.get(
+                    cat
+                        ? `http://localhost:5000/api/products?category=${cat}`
+                        : "http://localhost:5000/api/products"
+                );
+                setProducts(res.data);
+            } catch (err) { }
+        };
+        getProducts();
+    }, [cat]);
+
+    useEffect(() => {
+        cat &&
+            setFilteredProducts(
+                products.filter((item) =>
+                    Object.entries(filters).every(([key, value]) =>
+                        item[key].includes(value)
+                    )
+                )
+            );
+    }, [products, cat, filters]);
+
+    useEffect(() => {
+        if (sort === "newest") {
+            setFilteredProducts((prev) =>
+                [...prev].sort((a, b) => a.createdAt - b.createdAt)
+            );
+        } else if (sort === "asc") {
+            setFilteredProducts((prev) =>
+                [...prev].sort((a, b) => a.price - b.price)
+            );
+        } else {
+            setFilteredProducts((prev) =>
+                [...prev].sort((a, b) => b.price - a.price)
+            );
+        }
+    }, [sort]);
+
     return (
         <Container>
-            <Section>Top</Section>
-            <SubTitle>Os Mais Vendidos</SubTitle>
-            <Wrapper  >
-            {popularProducts.map((item) => (
-                <Product item={item} Key={item.id} />
-            ))}
-            </Wrapper>
-            <Button><Link to="/product">Ver Mais</Link></Button>
+            <Wrapper>
+            {cat
+                ? filteredProducts.map((item) => <Product item={item} key={item.id} />)
+                : products
+                    .slice(0, 10)
+                    .map((item) => <Product item={item} key={item.id} />)}
+            </Wrapper> 
+            <Button> Ver Mais</Button>
         </Container>
-    )
-}
+    );
+};
 
 export default Products

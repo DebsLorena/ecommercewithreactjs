@@ -1,15 +1,20 @@
-import React from 'react'
-import Announcement from '../components/Announcement'
-import Navbar from '../components/Navbar'
-import Neswletter from '../components/Neswletter'
-import Footer from '../components/Footer'
-import styled from 'styled-components'
+import React from 'react';
+import Announcement from '../components/Announcement';
+import Navbar from '../components/Navbar';
+import Neswletter from '../components/Neswletter';
+import Footer from '../components/Footer';
+import styled from 'styled-components';
 import { Add, Remove, LocalMall } from '@material-ui/icons';
 import ProductList from '../components/Products';
 import { mobile } from "../responsive";
 import compartilhar from '../img/compartilhar.png'
-import coracao from '../img/coracao.png'
-import pix from '../img/pix.png'
+import coracao from '../img/coracao.png';
+import pix from '../img/pix.png';
+import { useLocation } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { publicRequest } from "../requestMethods";
+import { addProduct } from "../redux/cartRedux";
+import { useDispatch } from "react-redux";
 
 const Container = styled.div``;
 
@@ -21,16 +26,7 @@ const Wrapper = styled.div`
 
 const ImgContainer = styled.div`
     width: 45%;
-    
 `;
-const SmalImg = styled.div``;
-
-const SmalImage = styled.img`
-    width: 100px;
-    float: left;
-    display: block;
-    position: relative;
-    `;
 
 const Image = styled.img`
     width: 500px;
@@ -39,6 +35,15 @@ const Image = styled.img`
     object-fit: cover;
     ${mobile({ height: "40vh" })}
 `;
+
+// const SmalImg = styled.div``;
+
+// const SmalImage = styled.img`
+//     width: 100px;
+//     float: left;
+//     display: block;
+//     position: relative;
+//`;
 
 const InfoContainer = styled.div`
     width: 45%;
@@ -59,11 +64,6 @@ const Info = styled.div`
 
 const Title = styled.h2``;
 
-const IdProduct = styled.p`
-    padding: 5px 0px;
-    font-size: 12px;
-`;
-
 const Icon = styled.img`
     max-width: 30px;
     max-height: 30px;
@@ -71,27 +71,25 @@ const Icon = styled.img`
     position: absolute;
     top: 10px;
     right: 60px;
-    `;
+`;
 
 const ContainerPrice = styled.div`
     position: relative;
     height: 80px;
     color: gray;
-    `;
-    
+`;
+
 const TextOldPrice = styled.span``;
 
 const OldPrice = styled.span`
-    padding: 5px
-
+    padding: 5px;
 `;
 
 const TextNewPrice = styled.span`
     position: absolute;
     top: 40px;
-    left: 0px;
-    `;
-
+    left: 0;
+`;
 
 const Price = styled.span`
     position: absolute;
@@ -106,7 +104,8 @@ const Pix = styled.img`
     max-width: 80px;
     max-height: 80px;
     position: absolute;
-    right: 160px;`;
+    right: 160px;
+`;
 
 const TextPix = styled.span`
     width: 140px;   
@@ -114,46 +113,9 @@ const TextPix = styled.span`
     top: 20px;
     right: 10px;
     font-size: 14px;
-    
     display: flex;
     align-items: flex-start;
-    `;
-
-
-// const FilterContainer = styled.div`
-//     width: 50%;
-//     margin: 30px 0px;
-//     display: flex;
-//     justify-content: space-between;
-//     ${mobile({ width: "100%" })}
-// `;
-
-// const Filter = styled.div`
-//     display: flex;
-//     align-items: center;
-// `;
-
-// const FilterTitle = styled.span`
-//     font-size: 20px;
-//     font-weight: 200;
-// `;
-
-// const FilterColor = styled.div`
-//     width: 20px;
-//     height: 20px;
-//     border-radius: 50%;
-//     background-color: ${(props) => props.color};
-//     margin: 0px 5px;
-//     cursor: pointer;
-// `;
-
-// const FilterSize = styled.select`
-//     margin-left: 10px;
-//     padding: 5px;
-// `;
-
-// const FilterSizeOption = styled.option``;
-
+`;
 const AddContainer = styled.div`
     width: 50%;
     padding: 20px 0px 0px 0px;
@@ -222,65 +184,79 @@ const Desc = styled.p`
     color: gray;
 `;
 
+
+
 const Product = () => {
+
+    const location = useLocation();
+    const id = location.pathname.split("/")[2];
+    const [product, setProduct] = useState({});
+    const [quantity, setQuantity] = useState(1);
+    const dispatch = useDispatch()
+
+    useEffect(() => {
+        const getProduct = async () => {
+            try {
+                const res = await publicRequest.get("/products/find/" + id);
+                setProduct(res.data);
+            } catch { }
+        };
+        getProduct();
+    }, [id]);
+
+    const handleQuantity = (type) => {
+        if (type === "dec") {
+            quantity > 1 && setQuantity(quantity - 1);
+        } else {
+            setQuantity(quantity + 1);
+        }
+    };
+
+    const handleClick = () => {
+        dispatch(
+            addProduct({ ...product, quantity })
+        );
+    };
+
+
     return (
         <Container>
             <Announcement />
             <Navbar />
-
             <Wrapper>
                 <ImgContainer>
-                    <Image src="https://i.imgur.com/IYnjq5k.png" />
-                    <SmalImg>
+                    <Image src={product.img} />
+                    {/* <SmalImg>
                         <SmalImage src="https://i.imgur.com/IYnjq5k.png" />
                         <SmalImage src="https://i.imgur.com/IYnjq5k.png" />
                         <SmalImage src="https://i.imgur.com/IYnjq5k.png" />
                         <SmalImage src="https://i.imgur.com/IYnjq5k.png" />
                         <SmalImage src="https://i.imgur.com/IYnjq5k.png" />
-                    </SmalImg>
+                    </SmalImg> */}
                 </ImgContainer>
 
                 <InfoContainer>
                     <Info>
-                    <Title>Mochila Masculina Infantil</Title>
-                    <IdProduct>Código: 556847</IdProduct>
-                    <Icon src={compartilhar} alt="compartilhar"></Icon>
-                    <Icon style={{ marginTop: "40px" }} src={coracao} alt="compartilhar"></Icon>
-                    <Feature></Feature>
-                    <ContainerPrice>
-                        <TextOldPrice>de</TextOldPrice>
-                        <OldPrice> R$64,90</OldPrice>
-                        <TextNewPrice>por</TextNewPrice>
-                        <Price>R$ 49,90</Price>
-                        <Pix src={pix} alt="compartilhar"/> 
-                        <TextPix>Economize 5% com pagamentos em pix.</TextPix>
-                    </ContainerPrice>
-                    {/* <FilterContainer>
-                        <Filter>
-                            <FilterTitle>Color</FilterTitle>
-                            <FilterColor color="black" />
-                            <FilterColor color="darkblue" />
-                            <FilterColor color="gray" />
-                        </Filter>
-                        <Filter>
-                            <FilterTitle>Size</FilterTitle>
-                            <FilterSize>
-                                <FilterSizeOption>XS</FilterSizeOption>
-                                <FilterSizeOption>S</FilterSizeOption>
-                                <FilterSizeOption>M</FilterSizeOption>
-                                <FilterSizeOption>L</FilterSizeOption>
-                                <FilterSizeOption>XL</FilterSizeOption>
-                            </FilterSize>
-                        </Filter>
-                    </FilterContainer> */}
-                    <AddContainer>
-                        <AmountContainer>
-                            <Remove />
-                            <Amount>1</Amount>
-                            <Add />
-                        </AmountContainer>
-                        <Button><LocalMall />Adicionar a Sacola</Button>
-                    </AddContainer>
+                        <Title>{product.title}</Title>
+                        <Icon src={compartilhar} alt="compartilhar"></Icon>
+                        <Icon style={{ marginTop: "40px" }} src={coracao} alt="compartilhar"></Icon>
+                        <Feature></Feature>
+                        <ContainerPrice>
+                            <TextOldPrice>de</TextOldPrice>
+                            <OldPrice>R$</OldPrice>
+                            <TextNewPrice>por</TextNewPrice>
+                            <Price>R$ {product.price}</Price>
+                            <Pix src={pix} alt="compartilhar" />
+                            <TextPix>Economize 5% com pagamentos em pix.</TextPix>
+                        </ContainerPrice>
+                        <AddContainer>
+                            <AmountContainer>
+                                <Remove onClick={() => handleQuantity("dec")} />
+                                <Amount>{quantity}</Amount>
+                                <Add onClick={() => handleQuantity("inc")} />
+                            </AmountContainer>
+                            <Button onClick={handleClick}><LocalMall />Adicionar a Sacola</Button>
+                        </AddContainer>
                     </Info>
 
                     <Description>
@@ -289,11 +265,7 @@ const Product = () => {
                         </TitleDescription>
                         <Feature></Feature>
                         <Desc>
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec
-                            venenatis, dolor in finibus malesuada, lectus ipsum porta nunc, at
-                            iaculis arcu nisi sed mauris. Nulla fermentum vestibulum ex, eget
-                            tristique tortor pretium ut. Curabitur elit justo, consequat id
-                            condimentum ac, volutpat ornare.
+                            {product.desc}
                         </Desc>
                     </Description>
 

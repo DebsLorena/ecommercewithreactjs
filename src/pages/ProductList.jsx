@@ -1,5 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
+import { useState } from 'react';
+import { useLocation } from 'react-router-dom';
 import Announcement from '../components/Announcement';
 import Footer from '../components/Footer';
 import Navbar from '../components/Navbar';
@@ -21,7 +23,7 @@ const Title = styled.h1`
     display: flex;
     align-items: center;
     justify-content: center;
-    
+    text-transform: capitalize;
 `;
 
 const Wrapper = styled.div`
@@ -75,17 +77,33 @@ const Categories = styled.div`
     right: 10px;
 `;
 const ProductList = () => {
+
+    const location = useLocation();
+    const cat = location.pathname.split("/")[2];
+    const [filters, setFilters] = useState({});
+    const [sort, setSort] = useState("newest");
+
+    const handleFilters = (e) => {
+        const value = e.target.value;
+        setFilters({
+            ...filters,
+            [e.target.name]: value,
+        });
+    };
+
+
+
     return (
         <Container>
             <Announcement />
             <Navbar />
-            <Title>Papelaria</Title>
+            <Title>{cat}</Title>
             <Wrapper>
                 <FilterContainer>
                     <Filter>
                         <FilterText>Categorias:</FilterText>
-                        <Select>
-                            <Option disabled selected>
+                        <Select name="cat" onChange={handleFilters}>
+                            <Option disabled>
                                 Categoria
                             </Option>
                             <Option>Novidades</Option>
@@ -99,8 +117,8 @@ const ProductList = () => {
                     </Filter>
                     <Filter>
                         <FilterText>Marcas:</FilterText>
-                        <Select>
-                            <Option disabled selected>
+                        <Select name="marca" onChange={handleFilters}>
+                            <Option disabled>
                                 Marca
                             </Option>
                             <Option>Tilibra</Option>
@@ -112,8 +130,8 @@ const ProductList = () => {
                     </Filter>
                     <Filter>
                         <FilterText>Cores:</FilterText>
-                        <Select>
-                            <Option disabled selected>
+                        <Select name="color" onChange={handleFilters}>
+                            <Option disabled>
                                 Marca
                             </Option>
                             <Option>Azul</Option>
@@ -126,15 +144,15 @@ const ProductList = () => {
                         </Select>
                     </Filter>
                     <Filter>
-                        <FilterText>Preço:</FilterText>
-                        <Select>
-                            <Option disabled selected>Preço</Option>
-                            <Option>Maior preço</Option>
-                            <Option>Menor preço</Option>
+                        <FilterText>Ordenar:</FilterText>
+                        <Select  onChange={(e) => setSort(e.target.value)}>
+                            <Option value="newest">Mais novos</Option>
+                            <Option value="asc">Maior preço</Option>
+                            <Option value="desc">Menor preço</Option>
                         </Select>
                     </Filter>
                 </FilterContainer>
-                <Categories><Products /></Categories>
+                <Categories><Products cat={cat} filters={filters} sort={sort} /></Categories>
             </Wrapper>
             <Footer />
         </Container>
