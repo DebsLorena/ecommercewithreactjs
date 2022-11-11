@@ -1,10 +1,7 @@
-import React, { useEffect, useState } from 'react';
-import styled from 'styled-components';
+import React, { useEffect, useState } from "react";
+import styled from "styled-components";
 import Product from "./Product";
 import axios from "axios";
-import { Link } from "react-router-dom";
-
-
 
 const Container = styled.div`
     padding: 20px 0px 20px 0px;
@@ -33,7 +30,6 @@ const Button = styled.div`
     color: white;
     };
 `;
-
 
 const Products = ({ cat, filters, sort }) => {
     const [products, setProducts] = useState([]);

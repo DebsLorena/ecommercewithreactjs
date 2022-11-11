@@ -1,5 +1,5 @@
-import React from 'react';
-import styled from 'styled-components';
+import React from "react";
+import styled from "styled-components";
 import { categories } from "../data";
 import CategoryItem from "../components/CategoryItem";
 import { motion } from "framer-motion/dist/framer-motion";
@@ -11,7 +11,7 @@ const Container = styled.div`
     width: 100%;
     overflow: hidden;
     width: 100%;
-    `;
+`;
 
 const Wrapper = styled.div`
     display: flex;
@@ -27,7 +27,7 @@ const Section = styled.div`
     font-weight: 400;
     color: #A457B6;
     padding: 5px 0px;
-    `;
+`;
 
 const SubTitle = styled.div`
     display: flex;
@@ -41,7 +41,6 @@ const SubTitle = styled.div`
 
 const Categories = () => {
 
-    
     const carousel = useRef();
     const [width, setWidth] = useState(0)
 
@@ -70,8 +69,8 @@ const Categories = () => {
                 </motion.div>
             </motion.div>
         </Container>
-    )
-}
+    );
+};
 
 export default Categories;
 

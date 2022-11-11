@@ -1,15 +1,14 @@
-import React from 'react';
-import Announcement from '../components/Announcement';
-import Navbar from '../components/Navbar';
-import Neswletter from '../components/Neswletter';
-import Footer from '../components/Footer';
-import styled from 'styled-components';
-import { Add, Remove, LocalMall } from '@material-ui/icons';
-import ProductList from '../components/Products';
-import { mobile } from "../responsive";
-import compartilhar from '../img/compartilhar.png'
-import coracao from '../img/coracao.png';
-import pix from '../img/pix.png';
+import React from "react";
+import Announcement from "../components/Announcement";
+import Navbar from "../components/Navbar";
+import Neswletter from "../components/Neswletter";
+import Footer from "../components/Footer";
+import styled from "styled-components";
+import { Add, Remove, LocalMall } from "@material-ui/icons";
+import ProductList from "../components/Products";
+import compartilhar from "../img/compartilhar.png"
+import coracao from "../img/coracao.png";
+import pix from "../img/pix.png";
 import { useLocation } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { publicRequest } from "../requestMethods";
@@ -21,7 +20,10 @@ const Container = styled.div``;
 const Wrapper = styled.div`
     padding: 50px;
     display: flex;
-    ${mobile({ padding: "10px", flexDirection: "column" })}
+    @media (max-width: 480px){
+    padding: 10px;
+    flex-direction: column;
+    };
 `;
 
 const ImgContainer = styled.div`
@@ -33,7 +35,9 @@ const Image = styled.img`
     display: block;
     height: auto;
     object-fit: cover;
-    ${mobile({ height: "40vh" })}
+    @media (max-width: 480px){
+    height: 50vh;
+    };
 `;
 
 // const SmalImg = styled.div``;
@@ -50,8 +54,10 @@ const InfoContainer = styled.div`
     display: block;
     position: relative;
     padding: 0px 50px;
-    
-    ${mobile({ padding: "10px" })}
+    @media (max-width: 480px){
+    width: 100%;
+    padding: 10px 0px;
+    }; 
 `;
 
 const Info = styled.div`
@@ -71,6 +77,10 @@ const Icon = styled.img`
     position: absolute;
     top: 10px;
     right: 60px;
+    @media (max-width: 480px){
+        top: 30px;
+        right: 20px;
+    }; 
 `;
 
 const ContainerPrice = styled.div`
@@ -105,6 +115,9 @@ const Pix = styled.img`
     max-height: 80px;
     position: absolute;
     right: 160px;
+    @media (max-width: 480px){
+        display: none;
+    }; 
 `;
 
 const TextPix = styled.span`
@@ -115,6 +128,10 @@ const TextPix = styled.span`
     font-size: 14px;
     display: flex;
     align-items: flex-start;
+    @media (max-width: 480px){
+        top: 30px;
+        right: 0px;
+    }; 
 `;
 const AddContainer = styled.div`
     width: 50%;
@@ -122,7 +139,6 @@ const AddContainer = styled.div`
     display: flex;
     align-items: center;
     justify-content: space-between;
-    ${mobile({ width: "100%" })}
 `;
 
 const AmountContainer = styled.div`
@@ -162,7 +178,11 @@ const Button = styled.button`
     background-image: linear-gradient(to right, #62C39D,#49ADBD, #7372B4, #A457B6, #CD3BCF);
     color: white;
     };
+    @media (max-width: 480px){
+        right: 20px;
+    };
 `;
+
 const Description = styled.div`
     background: rgba(164,87,182,0.1);
     padding: 20px;
@@ -172,6 +192,7 @@ const Description = styled.div`
 const TitleDescription = styled.h2`
     color: gray;
 `;
+
 const Feature = styled.div`
     margin: 10px 0px;
     border: 1px solid rgba(164,87,182,0.1);
@@ -211,7 +232,6 @@ const Product = () => {
             setQuantity(quantity + 1);
         }
     };
-
     const handleClick = () => {
         dispatch(
             addProduct({ ...product, quantity })
@@ -234,7 +254,6 @@ const Product = () => {
                         <SmalImage src="https://i.imgur.com/IYnjq5k.png" />
                     </SmalImg> */}
                 </ImgContainer>
-
                 <InfoContainer>
                     <Info>
                         <Title>{product.title}</Title>
@@ -258,7 +277,6 @@ const Product = () => {
                             <Button onClick={handleClick}><LocalMall />Adicionar a Sacola</Button>
                         </AddContainer>
                     </Info>
-
                     <Description>
                         <TitleDescription>
                             Descrição
@@ -268,7 +286,6 @@ const Product = () => {
                             {product.desc}
                         </Desc>
                     </Description>
-
                 </InfoContainer>
             </Wrapper>
             <ProductList />

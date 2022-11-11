@@ -1,8 +1,6 @@
-import React from 'react';
-import { Send } from '@material-ui/icons';
-import styled from 'styled-components';
-import { mobile } from "../responsive";
-
+import React from "react";
+import { Send } from "@material-ui/icons";
+import styled from "styled-components";
 
 const Container = styled.div`
     height: 18vh;
@@ -24,7 +22,6 @@ const Desc = styled.div`
     font-weight: 300;
     margin-bottom: 10px;
     color: white;
-    ${mobile({ textAlign: "center" })}
 `;
 
 const InputContainer = styled.div`
@@ -34,7 +31,9 @@ const InputContainer = styled.div`
     display: flex;
     justify-content: space-between;
     border: 1px solid lightgray;
-    ${mobile({ width: "80%" })}
+    @media (max-width: 480px) {
+        width: 80%;
+    };
 `;
 
 const Input = styled.input`
@@ -62,8 +61,7 @@ const Neswletter = () => {
             </Button>
             </InputContainer>
         </Container>
-
-    )
-}
+    );
+};
 
 export default Neswletter

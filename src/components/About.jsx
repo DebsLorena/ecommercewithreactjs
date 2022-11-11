@@ -74,6 +74,11 @@ const Logo = styled.p`
     left: 150px;
     top: -50px;
     opacity: 0.2;
+    @media (max-width: 480px){
+        left: 0px;
+        top: 20px;
+        font-size: 100px;
+    };
 `;
 
 const Img = styled.img`
@@ -83,6 +88,11 @@ const Img = styled.img`
     right: 150px;
     bottom: -150px;
     opacity: 0.2;
+    @media (max-width: 480px){
+        right: -80px;
+        bottom: -20px;
+        width: 250px;
+    };
 `;
 
 
@@ -90,7 +100,7 @@ const Img = styled.img`
 const About = () => {
     
     return (
-        <Container>
+        <Container id="about">
             <Logo>Enjoy</Logo>
             <Wrapper>
                 <SubTitle>Um pouquinho da nossa História</SubTitle>
@@ -101,7 +111,7 @@ const About = () => {
             </Wrapper>
             <Img src={logo} alt="logo-enjoy"></Img>
         </Container>
-    )
-}
+    );
+};
 
 export default About

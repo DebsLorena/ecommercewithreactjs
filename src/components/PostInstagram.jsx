@@ -1,15 +1,15 @@
-import React, { useState, useEffect, useRef } from 'react';
-import styled from 'styled-components';
+import React, { useState, useEffect, useRef } from "react";
+import styled from "styled-components";
 import { motion } from "framer-motion/dist/framer-motion";
-import image1 from '../img/insta/1.png';
-import image2 from '../img/insta/2.png';
-import image3 from '../img/insta/3.png';
-import image4 from '../img/insta/4.png';
-import image5 from '../img/insta/5.png';
-import image6 from '../img/insta/6.png';
-import image7 from '../img/insta/7.png';
-import image8 from '../img/insta/8.png';
-import { mobile } from "../responsive";
+import image1 from "../img/insta/1.png";
+import image2 from "../img/insta/2.png";
+import image3 from "../img/insta/3.png";
+import image4 from "../img/insta/4.png";
+import image5 from "../img/insta/5.png";
+import image6 from "../img/insta/6.png";
+import image7 from "../img/insta/7.png";
+import image8 from "../img/insta/8.png";
+
 
 const Container = styled.div`
     width: 100%;
@@ -20,7 +20,6 @@ const Container = styled.div`
     background: rgba(164,87,182,0.1);
 `;
 
-
 const Section = styled.div`
     display: flex;
     align-items: center;
@@ -29,7 +28,7 @@ const Section = styled.div`
     font-weight: 400;
     color: #A457B6;
     padding: 5px 0px;
-    `;
+`;
 
 const SubTitle = styled.div`
     font-size: 24px;
@@ -46,11 +45,10 @@ const Wrapper = styled.div`
     position: relative;
     display: flex;
     cursor: grab;
-    img { pointer-events:none }
+    img { pointer-events:none };
 `;
 
 const image = [image1, image2, image3, image4, image5, image6, image7, image8]
-
 
 const PostInstagram = () => {
 
@@ -71,7 +69,7 @@ const PostInstagram = () => {
                         <Wrapper>
                         {image.map(image => (
                             <motion.div key={image}>
-                                <img src={image} alt="image insta" />
+                                <img src={image} alt="insta" />
                             </motion.div>
                         ))}
                     </Wrapper>

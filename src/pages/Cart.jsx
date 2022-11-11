@@ -3,23 +3,17 @@ import styled from "styled-components";
 import Announcement from "../components/Announcement";
 import Footer from "../components/Footer";
 import Navbar from "../components/Navbar";
-import { mobile } from "../responsive";
 import HospitaldoCancer from "../components/HospitaldoCancer";
-import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
-import { userRequest } from "../requestMethods";
-import { useHistory } from "react-router";
 
 
 const Container = styled.div`
     color: gray;
 `;
-    
+
 
 const Wrapper = styled.div`
     background: #f5fbfd;
-    ${mobile({ padding: "10px" })}
-
 `;
 
 const Title = styled.h1`
@@ -42,6 +36,7 @@ const Top = styled.div`
     padding: 20px 0px;
     background: white;
 `;
+
 const TopButtonLeft = styled.button`
     width: 200px;
     border: none;
@@ -76,8 +71,11 @@ const TopButtonRight = styled.button`
 `;
 
 const TopTexts = styled.div`
-    ${mobile({ display: "none" })}
+    @media (max-width: 480px){
+    display: none;
+    };
 `;
+
 const TopText = styled.span`
     text-decoration: underline;
     cursor: pointer;
@@ -88,7 +86,9 @@ const Bottom = styled.div`
     padding: 20px 0px;
     display: flex;
     justify-content: space-between;
-    ${mobile({ flexDirection: "column" })}
+    @media (max-width: 480px){
+    flex-direction: column;
+    };
 `;
 
 const Info = styled.div`
@@ -98,7 +98,6 @@ const Info = styled.div`
 const Product = styled.div`
     display: flex;
     justify-content: space-between;
-    ${mobile({ flexDirection: "column" })}
 `;
 
 const ProductDetail = styled.div`
@@ -119,7 +118,11 @@ const Details = styled.div`
 
 const ProductName = styled.span``;
 
-const ProductId = styled.span``;
+const ProductId = styled.span`
+    @media (max-width: 480px){
+    display: none;
+    };
+`;
 
 const ProductColor = styled.div`
     width: 20px;
@@ -127,8 +130,6 @@ const ProductColor = styled.div`
     border-radius: 50%;
     background-color: ${(props) => props.color};
 `;
-
-// const ProductSize = styled.span``;
 
 const PriceDetail = styled.div`
     flex: 1;
@@ -148,13 +149,17 @@ const ProductAmountContainer = styled.div`
 const ProductAmount = styled.div`
     font-size: 24px;
     margin: 5px;
-    ${mobile({ margin: "5px 15px" })}
+    @media (max-width: 480px){
+    margin: 5px 15px;
+    };
 `;
 
 const ProductPrice = styled.div`
     font-size: 30px;
     font-weight: 200;
-    ${mobile({ marginBottom: "20px" })}
+    @media (max-width: 480px){
+    margin-bottom: 20px;
+    };
 `;
 
 const Line = styled.hr`
@@ -265,7 +270,6 @@ const Cart = () => {
                         </SummaryItem>
                         <Input placeholder="cep" />
                         <SummaryItem>
-
                             <SummaryItemText>Taxa de entrega</SummaryItemText>
                             <SummaryItemPrice>R$ 5.90</SummaryItemPrice>
                         </SummaryItem>

@@ -1,9 +1,7 @@
-import React from 'react';
-import styled from 'styled-components';
+import React from "react";
+import styled from "styled-components";
 import { LocalMall, Share, FavoriteBorderOutlined } from "@material-ui/icons";
 import { Link } from "react-router-dom";
-
-
 
 const Wrapper = styled.div`
     opacity: 0;
@@ -16,9 +14,7 @@ const Wrapper = styled.div`
     border-radius: 4px;
     transition: all 0.5 ease;
     cursor: pointer;
-    
 `;
-
 
 const Container = styled.div`
     flex: 1;
@@ -32,8 +28,7 @@ const Container = styled.div`
     background-color: #f5fbfd; 
     &:hover ${Wrapper}{
     opacity: 1;
-    }
-
+    };
 `;
 
 const Circle = styled.div`
@@ -66,12 +61,11 @@ const Icon = styled.div`
     justify-content: center;
     transition: all 0.5s ease;
     margin: 5px;
-    
     &:hover {
         background-color: #A457B6;
         color: white;
         transform: scale(1.1);
-    }
+    };
 `;
 
 const Description = styled.div`
@@ -84,6 +78,7 @@ const Description = styled.div`
     bottom: 10px;
     left: 10px;
 `;
+
 const Price = styled.div`
     width: 33%;
     font-size: 22px;
@@ -93,21 +88,20 @@ const Price = styled.div`
     position: absolute;
     bottom: 10px;
     right: 10px;
-    
     &:hover {
         color:  #A457B6;
         transform: scale(1.1);
-    }
+    };
 `;
 
 
 const Product = ({ item }) => {
     return (
-        
         <Container >
-            <Circle><Link to={`/product/${item._id}`}></Link></Circle>
+            {/* <Link style={{ textDecoration:"none" }}to={`/product/${item._id}`}> */}
+            <Circle/>
             <Image src={item.img}/>
-            <Wrapper>
+            <Wrapper> 
                 <Info>
                     <Icon >
                         <Link to={`/product/${item._id}`}> <LocalMall/> </Link>                        
@@ -121,9 +115,9 @@ const Product = ({ item }) => {
                 </Info>
                 <Link to={`/product/${item._id}`}><Description >{item.desc}</Description></Link>
                 <Link to={`/product/${item._id}`}><Price>{item.price}</Price></Link>
+                
             </Wrapper>
-
-
+            {/* </Link> */}
         </Container>
     );
 };

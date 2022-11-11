@@ -1,7 +1,6 @@
-import React from 'react';
-import styled from 'styled-components';
-import { Facebook, Instagram, YouTube, LinkedIn } from '@material-ui/icons';
-import { mobile } from "../responsive";
+import React from "react";
+import styled from "styled-components";
+import { Facebook, Instagram, YouTube, LinkedIn } from "@material-ui/icons";
 import logolutapelavida from "../img/logolutapelavida.png";
 
 const Container = styled.div`
@@ -12,7 +11,6 @@ const Container = styled.div`
     overflow: hidden;
     color: #4e4e4e;
     flex-wrap: wrap;
-    ${mobile({ flexDirection: "column" })}
 `;
 
 const Left = styled.div`
@@ -28,6 +26,12 @@ const Image = styled.img`
     left: -150px;
     bottom: -120px;
     position: absolute;
+    @media (max-width: 480px){
+        max-width: 120px;
+        max-height: 120px;
+        left: 270px;
+        bottom: 0px;
+    };
 `;
 
 const Logo = styled.h4`
@@ -43,7 +47,6 @@ const SubLogo = styled.h3`
 const Desc = styled.p`
     margin: 20px 0px;
     z-index: 1;
-
 `;
 
 const DivButton = styled.div`
@@ -68,15 +71,13 @@ const Button = styled.button`
     &:hover {
         background:#4e4e4e;
         color: white;
-    }
+    };
 `;
 
 const Center = styled.div`
     flex: 1;
     padding: 20px;
-    ${mobile({ display: "none" })}
 `;
-
 
 const List = styled.ul`
     margin: 0;
@@ -93,11 +94,8 @@ const ListItem = styled.li`
     z-index: 1;
 `;
 
-
-
 const Right = styled.div`
     padding: 20px;
-    ${mobile({ backgroundColor: "#fff8f8" })}
 `;
 
 const ImageRight = styled.img`
@@ -106,6 +104,10 @@ const ImageRight = styled.img`
     right: 60px;
     top: -130px;
     position: absolute;
+    @media (max-width: 480px){
+        right:-100px;
+        top: -150px;
+    };
 `; 
 
 const SocialContainer = styled.div`
@@ -113,7 +115,6 @@ const SocialContainer = styled.div`
     display: flex;
     flex-direction: column;
     align-items: center;
-    
 `;
 
 const SocialIcon = styled.div`
@@ -128,7 +129,7 @@ const SocialIcon = styled.div`
     margin-right: 20px;
     &:hover {
         background-color: #4e4e4e;
-    }
+    };
 `;
 
 
@@ -141,10 +142,9 @@ const HospitaldoCancer = () => {
                 <Desc> O Grupo Luta Pela Vida é uma instituição sem fins lucrativos fundada em 1996 por um grupo de pessoas com o objetivo de oferecer bem-estar e melhores condições de tratamento e cura aos pacientes oncológicos atendidos em Uberlândia.
                 </Desc>
                 <DivButton>
-                <Button>Doações Online</Button>
-                <Button>Central de doações</Button>
+                <Button><a href="https://doegrupolutapelavida.org/unidospelavida/single_step" target="_blank" rel="noreferrer">Doações Online</a></Button>
+                <Button><a href="https://hospitaldocancer.org.br/comoajudar/" target="_blank" rel="noreferrer">Central de doações</a></Button>
                 </DivButton>
-                
             </Left>
             <Center>
                 <Logo>Doe:</Logo>
@@ -161,22 +161,22 @@ const HospitaldoCancer = () => {
             <Right>
             <ImageRight src={logolutapelavida} alt="logo-enjoy"></ImageRight>
                 <SocialContainer>
-                    <SocialIcon>
-                        <Facebook />
+                    <SocialIcon><a href="https://www.facebook.com/grupolutapelavida" target="_blank" rel="noreferrer">
+                        <Facebook /></a>
                     </SocialIcon>
-                    <SocialIcon>
-                        <Instagram />
+                    <SocialIcon><a href="https://www.instagram.com/grupolutapelavida/" target="_blank" rel="noreferrer">
+                        <Instagram /></a>
                     </SocialIcon>
-                    <SocialIcon>
-                        <LinkedIn />
+                    <SocialIcon><a href="https://www.linkedin.com/company/grupolutapelavida/" target="_blank" rel="noreferrer">
+                        <LinkedIn /></a>
                     </SocialIcon>
-                    <SocialIcon>
-                        <YouTube />
+                    <SocialIcon><a href="https://www.youtube.com/channel/UCG-n21Wl9PJ9nGKG1ClqZcQ" target="_blank" rel="noreferrer">
+                        <YouTube /></a>
                     </SocialIcon>
                 </SocialContainer>
             </Right>
         </Container>
-    )
-}
+    );
+};
 
 export default HospitaldoCancer

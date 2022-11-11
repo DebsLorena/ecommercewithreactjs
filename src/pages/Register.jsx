@@ -1,7 +1,5 @@
 import styled from "styled-components";
-import { mobile } from "../responsive";
 import { Link } from "react-router-dom";
-
 
 
 const Container = styled.div`
@@ -11,14 +9,18 @@ const Container = styled.div`
     display: flex;
     align-items: center;
     justify-content: center;
+    @media (max-width: 480px){
+        height: auto;
+    };
 `;
 
 const Wrapper = styled.div`
     width: 40%;
     padding: 20px;
     background-color:  rgba(255, 255, 255, 0.5);
-    ${mobile({ width: "75%" })}
-
+    @media (max-width: 480px){
+    width: 75%;
+    };
 `;
 
 const Title = styled.h1`
@@ -89,13 +91,11 @@ const Register = () => {
                     <Input placeholder="cpf" />
                     <Input placeholder="nome completo" />
                     <Input placeholder="nome completo" />
-
                     <Input placeholder="endereço" />
                     <Input placeholder="cep" />
                     <Input placeholder="complemento" />
                     <Input placeholder="cidade" />
                     <Input placeholder="estado" />
-
                     <Input placeholder="password" />
                     <Input placeholder="confirm password" />
                     <Agreement>

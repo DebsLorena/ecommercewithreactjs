@@ -1,6 +1,6 @@
-import React from 'react';
-import styled from 'styled-components';
-import { Link } from 'react-router-dom'
+import React from "react";
+import styled from "styled-components";
+import { Link } from "react-router-dom";
 
 const Container = styled.div`
     top: 10px;
@@ -19,9 +19,8 @@ const Circle = styled.img`
     height: 180px;
     border-radius: 50%;
     position: absolute;
-    
-    
 `;
+
 const Info = styled.div`
     position: absolute;
     top: 0;
@@ -48,7 +47,6 @@ const Button = styled.button`
     cursor: pointer;
     font-weight: 600;
     border-radius: 4px;
-
     &:hover {
     background: linear-gradient(to right, #62C39D,#49ADBD, #7372B4, #A457B6, #CD3BCF);
     color: white;
@@ -65,7 +63,7 @@ const CategoryItem = ({item}) => {
                     <Button><Link to={`/products/${item.cat}`}>Comprar Agora</Link></Button>
                 </Info>
         </Container>
-    )
-}
+    );
+};
 
 export default CategoryItem

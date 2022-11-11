@@ -1,8 +1,9 @@
-import React from 'react';
-import Announcement from '../components/Announcement';
-import Navbar from '../components/Navbar';
-import Footer from '../components/Footer';
+import React from "react";
+import Announcement from "../components/Announcement";
+import Navbar from "../components/Navbar";
+import Footer from "../components/Footer";
 import styled from "styled-components";
+import { Link } from "react-router-dom";
 
 
 const Container = styled.div``;
@@ -17,6 +18,7 @@ const Info = styled.div`
     display: flex;
     flex-direction: column;
     align-items: center;
+    text-align: center;
     justify-content: center;
 `;
 
@@ -41,7 +43,7 @@ const Notfound = () => {
             <Info>
                 <h2>404 Error</h2>
                 <h1>Desculpe, página não encontrada.</h1>
-                <Button>Voltar a página principal</Button>
+                <Button><Link to="/">Voltar a página principal</Link></Button>
             </Info>
 
             

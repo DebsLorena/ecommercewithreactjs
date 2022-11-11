@@ -1,12 +1,11 @@
-import React from 'react'
-import styled from 'styled-components'
-import { useState } from 'react';
-import { useLocation } from 'react-router-dom';
-import Announcement from '../components/Announcement';
-import Footer from '../components/Footer';
-import Navbar from '../components/Navbar';
-import Products from '../components/Products';
-import { mobile } from "../responsive";
+import React from "react";
+import styled from "styled-components";
+import { useState } from "react";
+import { useLocation } from "react-router-dom";
+import Announcement from "../components/Announcement";
+import Footer from "../components/Footer";
+import Navbar from "../components/Navbar";
+import Products from "../components/Products";
 
 const Container = styled.div`
     background: rgba(164,87,182,0.1);
@@ -31,7 +30,12 @@ const Wrapper = styled.div`
     width: 100%;
     height: 1200px;
     background: white;
+    @media (max-width: 480px){
+        flex-direction: column;
+        height: auto;
+    };
 `;
+
 const FilterContainer = styled.div`
     position: absolute;
     left: 10px;
@@ -42,12 +46,21 @@ const FilterContainer = styled.div`
     border-radius: 10px;
     display: flex;
     flex-direction: column;
-    
+    @media (max-width: 480px){
+        position: static;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        height: auto;
+        width: 100%;
+        padding: 0px 15px 20px 25px;
+    };
 `;
 
 const Filter = styled.div`
     padding: 20px 0px 0px 20px;
-    ${mobile({ width: "0px 20px", display: "flex", flexDirection: "column" })}
+    @media (max-width: 480px){
+        padding: 0;
+    };
 `;
 
 const FilterText = styled.span`
@@ -58,13 +71,11 @@ const FilterText = styled.span`
     display: flex;
     align-items: center;
     justify-content: space-between;
-    ${mobile({ marginRight: "0px" })}
 `;
 
 const Select = styled.select`
     padding: 10px;
     margin-right: 20px;
-    ${mobile({ margin: "10px 0px" })}
 `;
 
 const Option = styled.option`
@@ -75,7 +86,13 @@ const Categories = styled.div`
     width: 75%;
     position: absolute;
     right: 10px;
+    @media (max-width: 480px){
+        position: static;
+        width: 100%;
+        height: auto;
+    };
 `;
+
 const ProductList = () => {
 
     const location = useLocation();
@@ -156,7 +173,7 @@ const ProductList = () => {
             </Wrapper>
             <Footer />
         </Container>
-    )
-}
+    );
+};
 
 export default ProductList

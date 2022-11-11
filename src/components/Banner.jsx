@@ -1,5 +1,5 @@
-import React from 'react';
-import styled from 'styled-components';
+import React from "react";
+import styled from "styled-components";
 import { Link } from "react-router-dom";
 
 const Container = styled.div`
@@ -31,7 +31,6 @@ const Info = styled.div`
     &:hover {
         transform: scale(1.2);
         };
-    
 `;
 
 const Title = styled.h1`
@@ -39,7 +38,7 @@ const Title = styled.h1`
     margin-bottom: 20px;
     &:hover {
         color: #A457B6;
-        };
+    };
 `;
 
 const Button = styled.button`
@@ -67,7 +66,7 @@ const Banner = ({item}) => {
                     </Button>
                 </Info>
         </Container>
-    )
-}
+    );
+};
 
 export default Banner

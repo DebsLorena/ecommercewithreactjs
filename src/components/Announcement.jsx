@@ -1,7 +1,6 @@
-import React, { useState } from "react";
+import React from "react";
 import styled from "styled-components";
 import { WhatsApp, Search, Person, LocalMall } from "@material-ui/icons";
-import { mobile } from "../responsive";
 import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { Badge } from "@material-ui/core";
@@ -14,6 +13,9 @@ const Container = styled.div`
     display: flex;
     align-items: center;
     justify-content: center;
+    @media (max-width: 480px){
+        display: none;
+    }
 `;
 
 const Left = styled.div`
@@ -34,7 +36,6 @@ const Right = styled.div`
     display: flex;
     align-items: center;
     justify-content: flex-end;
-    ${mobile({ backgroundColor: "#fff8f8" })}
 `;
 
 const SocialContainer = styled.div`
@@ -55,8 +56,7 @@ const SocialIcon = styled.div`
     text-decoration: none;
     &:hover{
         background-color: #60a2b0;
-    }
-    
+    };
 `;
 const SearchBox = styled.div`
     position: absolute;
@@ -76,7 +76,7 @@ const Input = styled.input`
     border: 0 none;
     &:focus{
         outline: 0;
-    }
+    };
 `;
 const Announcement = () => {
 
@@ -111,7 +111,7 @@ const Announcement = () => {
                 </SearchBox>
                 <SocialContainer>
                     <SocialIcon >
-                        <a href="https://wa.me/+5534984148815" target="_blank" rel="whatsapp">
+                        <a href="https://wa.me/+5534984148815" target="_blank" rel="noreferrer">
                             <WhatsApp />
                         </a>
                     </SocialIcon>
@@ -129,7 +129,7 @@ const Announcement = () => {
                 </SocialContainer>
             </Right>
         </Container>
-    )
-}
+    );
+};
 
 export default Announcement

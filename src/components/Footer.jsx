@@ -1,14 +1,14 @@
-import React from 'react';
-import styled from 'styled-components';
-import { Facebook, Instagram, Twitter, Pinterest, YouTube, Phone, MailOutline, Room } from '@material-ui/icons';
-import { mobile } from "../responsive";
+import React from "react";
+import styled from "styled-components";
+import { Facebook, Instagram, Twitter, Pinterest, YouTube, Phone, MailOutline, Room } from "@material-ui/icons";
 import logo from "../img/logo-pink.png";
 import { Link } from "react-router-dom";
+
+
 
 const Container = styled.div`
     display: flex;
     flex-wrap: wrap;
-    ${mobile({ flexDirection: "column" })}
 `;
 
 const Left = styled.div`
@@ -17,7 +17,6 @@ const Left = styled.div`
     flex-direction: column;
     padding: 20px;
     color: #A457B6;
-
 `;
 
 const Image = styled.img`
@@ -39,7 +38,6 @@ const SubLogo = styled.h3`
 
 const Desc = styled.p`
     margin: 20px 0px;
-
 `;
 
 const SocialContainer = styled.div`
@@ -51,7 +49,7 @@ const SocialIcon = styled.div`
     height: 40px;
     border-radius: 50%;
     color: white;
-    background-color: #${props => props.color};
+    background-color: #A457B6;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -62,7 +60,6 @@ const Center = styled.div`
     flex: 1;
     padding: 20px;
     color: #A457B6;
-    ${mobile({ display: "none" })}
 `;
 
 const Title = styled.h3`
@@ -82,14 +79,11 @@ const ListItem = styled.li`
     margin-bottom: 10px;
 `;
 
-
 const Right = styled.div`
     flex: 1;
     padding: 20px;
     color: #A457B6;
-    ${mobile({ backgroundColor: "#fff8f8" })}
 `;
-
 const ContactItem = styled.div`
     margin-bottom: 20px;
     display: flex;
@@ -100,29 +94,28 @@ const Payment = styled.img`
     width: 50%;
 `;
 
-
 const Footer = () => {
     return (
         <Container>
             <Left>
-                <Logo> <Image src={logo} alt="logo-enjoy"></Image>Enjoy </Logo>
+                <Logo> <Link to="/"><Image src={logo} alt="logo-enjoy"></Image>Enjoy </Link></Logo>
                 <SubLogo> Paper & Presentes </SubLogo>
                 <Desc> A expressão Lorem ipsum em design gráfico e editoração é um texto padrão em latim utilizado na produção gráfica para preencher os espaços de texto em publicações para testar e ajustar aspectos visuais antes de utilizar conteúdo real. Wikipédia
                 </Desc>
                 <SocialContainer>
-                    <SocialIcon color="A457B6">
+                    <SocialIcon>
                         <Facebook />
                     </SocialIcon>
-                    <SocialIcon color="A457B6">
+                    <a href="https://www.instagram.com/enjoypapersepresentes/" target="_blank" rel="noreferrer"><SocialIcon color="A457B6">
                         <Instagram />
-                    </SocialIcon>
-                    <SocialIcon color="A457B6">
+                    </SocialIcon></a>
+                    <SocialIcon>
                         <Twitter />
                     </SocialIcon>
-                    <SocialIcon color="A457B6">
+                    <SocialIcon>
                         <Pinterest />
                     </SocialIcon>
-                    <SocialIcon color="A457B6">
+                    <SocialIcon>
                         <YouTube />
                     </SocialIcon>
                 </SocialContainer>
@@ -130,7 +123,7 @@ const Footer = () => {
             <Center>
                 <Title>Informações</Title>
                 <List>
-                    <ListItem>Sobre nós</ListItem>
+                    <ListItem><Link href="about" title="about">Sobre nós</Link></ListItem>
                     <ListItem>Categorias</ListItem>
                     <ListItem><Link to="/terms">Politica de Privacidades</Link></ListItem>
                     <ListItem><Link to="/terms">Termos & Condições</Link></ListItem>
@@ -138,11 +131,11 @@ const Footer = () => {
                     <ListItem><Link to="/terms">Trocas</Link></ListItem>
                     <ListItem><Link to="/terms">Gift Card</Link></ListItem>
                     <ListItem>Newsletter</ListItem>
-                    <ListItem>Entre em contato</ListItem>
+                    <ListItem><a href="https://wa.me/+5534984148815" target="_blank" rel="noreferrer">Entre em contato</a></ListItem>
                 </List>
             </Center>
             <Right>
-                <Title>Contact</Title>
+                <Title>Contato</Title>
                 <ContactItem>
                     <Room style={{ marginRight: "10px" }} /> Rua Curitiba, 520, Bairro Brasil - Uberlândia
                 </ContactItem>
@@ -150,7 +143,7 @@ const Footer = () => {
                     <Phone style={{ marginRight: "10px" }} /> 34 3245 8796
                 </ContactItem>
                 <ContactItem>
-                    <Phone style={{ marginRight: "10px" }} /> 34 98125 3045
+                    <Phone style={{ marginRight: "10px" }} /><a href="https://wa.me/+5534984148815" target="_blank" rel="noreferrer"> 34 98414 8815</a>
                 </ContactItem>
                 <ContactItem>
                     <MailOutline style={{ marginRight: "10px" }} /> contact@enjoypaper@gmail.com
@@ -158,7 +151,7 @@ const Footer = () => {
                 <Payment src="https://i.ibb.co/Qfvn4z6/payment.png" />
             </Right>
         </Container>
-    )
-}
+    );
+};
 
 export default Footer

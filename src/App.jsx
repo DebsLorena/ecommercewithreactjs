@@ -23,13 +23,13 @@ const App = () => {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/cart" element={<Cart />} />
-        {/* <Route path="/login" element={user ? (<Navigate replace to="/" />) : (<Login />)}  />  */}
+        <Route path="/login" element={user ? (<Navigate replace to="/" />) : (<Login />)}  /> 
         <Route path="/login" element={<Login />}  />
         <Route path="/product/:id" element={<Product />} />
         <Route path="/products/:category" element={<ProductList />} />
         <Route path="/productList" element={<ProductList />} />
         <Route path="/register" element={<Register />}  />
-        {/* <Route path="/register" element={user ? (<Navigate replace to="/" />) : (<Register />)}  /> */}
+        <Route path="/register" element={user ? (<Navigate replace to="/" />) : (<Register />)}  />
         <Route path="/terms" element={<Terms />} />
         <Route path="/myaccount" element={<MyAccount />} />
         <Route path="/*" element={<Notfound />} />

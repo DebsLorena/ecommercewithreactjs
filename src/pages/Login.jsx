@@ -1,7 +1,6 @@
 import { useState } from "react";
 import styled from "styled-components";
 import { login } from "../redux/apiCalls";
-import { mobile } from "../responsive";
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 
@@ -19,8 +18,9 @@ const Wrapper = styled.div`
     width: 25%;
     padding: 20px;
     background-color: rgba(255, 255, 255, 0.5);
-    ${mobile({ width: "75%" })}
-
+    @media (max-width: 480px){
+    width: 75%;
+    };
 `;
 
 const Title = styled.h1`
@@ -57,13 +57,15 @@ const Button = styled.button`
     }
     &:disabled {
     cursor: not-allowed;
-    }
+    };
 `;
+
 const Links = styled.div`
     display: flex;
     align-items: center;
     justify-content: center;
 `;
+
 const Linka = styled.a`
     margin: 10px 10px;
     font-size: 12px;
@@ -74,7 +76,6 @@ const Linka = styled.a`
     justify-content: center;
     color: #3b3b3b !important;
 `;
-
 
 const Error = styled.span`
     color: red;

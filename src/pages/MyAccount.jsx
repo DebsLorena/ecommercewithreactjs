@@ -1,9 +1,10 @@
-import React from 'react';
-import Announcement from '../components/Announcement';
-import Navbar from '../components/Navbar';
-import Footer from '../components/Footer';
+import React from "react";
+import Announcement from "../components/Announcement";
+import Navbar from "../components/Navbar";
+import Footer from "../components/Footer";
 import styled from "styled-components";
-import { Person, LocalMall, VpnKey,} from '@material-ui/icons';
+import { Person, LocalMall, VpnKey,} from "@material-ui/icons";
+import { Link } from "react-router-dom";
 
 
 const Container = styled.div``;
@@ -92,7 +93,6 @@ const MyAccount = () => {
             <Announcement />
             <Navbar />
             <Wrapper>
-                
                 <Title>Seja muito bem vinda(o)!</Title>
                 <SubTitle> Minha Conta</SubTitle>
                 <Form>
@@ -100,11 +100,9 @@ const MyAccount = () => {
                 <MyRegister><VpnKey />Alterar o cadastro</MyRegister>
                 <MyPassword><Person />Alterar a senha</MyPassword>
                 <LogoutApp><Person/>Sair</LogoutApp>
-                <Button>Voltar a página principal</Button>
+                <Button><Link to="/">Voltar a página principal</Link></Button>
                 </Form>
             </Wrapper>
-
-            
             <Footer />
         </Container>
     );
