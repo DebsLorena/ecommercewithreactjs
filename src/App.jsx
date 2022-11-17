@@ -9,6 +9,7 @@ import Cart from "./pages/Cart";
 import Terms from "./pages/Terms";
 import Notfound from "./pages/Notfound";
 import MyAccount from "./pages/MyAccount";
+import Search from "./pages/Search";
 import { useSelector } from "react-redux";
 
 
@@ -32,6 +33,7 @@ const App = () => {
         <Route path="/register" element={user ? (<Navigate replace to="/" />) : (<Register />)}  />
         <Route path="/terms" element={<Terms />} />
         <Route path="/myaccount" element={<MyAccount />} />
+        <Route path="/search" element={<Search />} />
         <Route path="/*" element={<Notfound />} />
       </Routes>
     </Router>

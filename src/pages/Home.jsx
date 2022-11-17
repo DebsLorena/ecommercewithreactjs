@@ -1,7 +1,7 @@
 import React from "react";
 import Announcement from "../components/Announcement";
 import Navbar from "../components/Navbar";
-import Slider from "../components/Slider";
+import Sliders from "../components/Sliders";
 import Bar from "../components/Bar";
 import Categories from "../components/Categories.jsx";
 import Products from "../components/Products";
@@ -18,7 +18,7 @@ const Home = () => {
         <div>
             <Announcement />
             <Navbar/>
-            <Slider />
+            <Sliders />
             <ButtonSlide />
             <Bar />
             <Categories />

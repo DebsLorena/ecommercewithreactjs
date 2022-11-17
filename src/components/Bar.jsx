@@ -8,7 +8,7 @@ import { Link } from "react-router-dom";
 
 const Container = styled.div`
     display: flex;
-    padding: 10px;
+    padding: 10px 20px;
 `;
 
 const Wrapper = styled.div`
@@ -17,8 +17,12 @@ const Wrapper = styled.div`
     width: 100%;
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: space-between;
     flex-wrap: wrap;
+    a {display: flex;
+    align-items: center;
+    justify-content: center;
+    }
     @media (max-width: 480px){
         display: grid;
     };

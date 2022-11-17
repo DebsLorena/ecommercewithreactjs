@@ -61,7 +61,7 @@ const Categories = () => {
                 transition={{ duration: 0.8 }}>
                     <Wrapper >
                         {categories.map((item) => (
-                            <motion.div Key={item.id} > 
+                            <motion.div key={item.id} > 
                                 <CategoryItem item={item}  />
                             </motion.div>
                         ))} 

@@ -62,7 +62,7 @@ const Banner = ({item}) => {
                 <Info>
                     <Title>{item.title}</Title>
                     <Button>
-                        <Link to={`/product/${item._id}`}>Comprar Agora</Link>
+                        <Link to={`/products/${item.categories}`}>Comprar Agora</Link>
                     </Button>
                 </Info>
         </Container>

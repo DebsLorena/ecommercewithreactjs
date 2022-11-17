@@ -97,8 +97,9 @@ const Price = styled.div`
 
 const Product = ({ item }) => {
     return (
+        
         <Container >
-            {/* <Link style={{ textDecoration:"none" }}to={`/product/${item._id}`}> */}
+            {/* <Link to={`/product/${item._id}`} style={{ textDecoration:"none" }} > */}
             <Circle/>
             <Image src={item.img}/>
             <Wrapper> 
@@ -119,6 +120,7 @@ const Product = ({ item }) => {
             </Wrapper>
             {/* </Link> */}
         </Container>
+        
     );
 };
 

@@ -1,6 +1,11 @@
 import React from "react";
 import { Send } from "@material-ui/icons";
 import styled from "styled-components";
+import { useState } from "react";
+import { addNewsletter } from "../redux/apiCalls";
+// import { useHistory } from "react-router-dom";
+import { useDispatch } from "react-redux";
+
 
 const Container = styled.div`
     height: 18vh;
@@ -50,13 +55,30 @@ const Button = styled.button`
 `;
 
 const Neswletter = () => {
+
+    const [inputs, setInputs] = useState({});
+    const dispatch = useDispatch();
+    // const history = useHistory();
+    
+    const handleClick = async e => {
+        e.preventDefault();
+        // console.log(handleClick)
+        console.log(inputs)
+
+
+        
+        const email = {inputs};
+        addNewsletter(email, dispatch);
+        // history.replace("/");
+    }
+
     return (
         <Container>
             <Title>Newsletter</Title>
             <Desc>Receba nossas promoções</Desc>
             <InputContainer>
-            <Input placeholder="Preencha o seu email" />
-            <Button>
+            <Input placeholder="Preencha o seu email" type="email" onChange={e => setInputs(e.target.value)} />
+            <Button onClick={handleClick}>
                 <Send />
             </Button>
             </InputContainer>

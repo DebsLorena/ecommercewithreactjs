@@ -31,7 +31,7 @@ const Button = styled.div`
     };
 `;
 
-const Products = ({ cat, filters, sort }) => {
+    const Products = ({ cat, filters, sort }) => {
     const [products, setProducts] = useState([]);
     const [filteredProducts, setFilteredProducts] = useState([]);
 
@@ -44,9 +44,10 @@ const Products = ({ cat, filters, sort }) => {
                         : "http://localhost:5000/api/products"
                 );
                 setProducts(res.data);
+                // console.log(res);
             } catch (err) { }
         };
-        getProducts();
+        getProducts();        
     }, [cat]);
 
     useEffect(() => {
@@ -83,7 +84,7 @@ const Products = ({ cat, filters, sort }) => {
                 ? filteredProducts.map((item) => <Product item={item} key={item.id} />)
                 : products
                     .slice(0, 10)
-                    .map((item) => <Product item={item} key={item.id} />)}
+                    .map((item) => <Product item={item} key={item._id} />)}
             </Wrapper> 
             <Button> Ver Mais</Button>
         </Container>

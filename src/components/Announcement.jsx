@@ -1,9 +1,12 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 import { WhatsApp, Search, Person, LocalMall } from "@material-ui/icons";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { Badge } from "@material-ui/core";
+import { logout } from "../redux/apiCalls";
+// import { useHistory } from "react-router-dom";
+import { useDispatch } from "react-redux";
 
 
 const Container = styled.div`
@@ -80,17 +83,19 @@ const Input = styled.input`
 `;
 const Announcement = () => {
 
-    const quantity = useSelector(state => state.cart.quantity)
-    // const [product, setProduct] = useState("");
-    // const { getProduct } = useGithub();
+    const navigate = useNavigate();
+    const quantity = useSelector(state => state.cart.quantity);
+    const [q, setQ] = useState("");
 
-    // function handleOnChange(e) {
-    //     setProduct(e.target.value);
-    // }
+    const [username, setUsername] = useState("");
+    // const history = useHistory();
+    const dispatch = useDispatch();
 
-    // function handleSubmit(e) {
-    //     getProduct(product);
-    // }
+    const handleClick = (e) => {
+    e.preventDefault()
+        logout(dispatch, {username});
+        // history.replaceState("/login");
+    }
 
     return (
         <Container>
@@ -101,13 +106,10 @@ const Announcement = () => {
                 <SearchBox>
                     <Input
                         placeholder="Pesquisar"
-                        type="text"
-                        // onChange={handleOnChange}
-                        // value={product}
-                        // onKeyDown={(e) => e.key == "Enter" && handleSubmit()} 
+                        // type="text"
+                        onChange={(e) => setQ(e.target.value)}
                         />
-                    {/* <SocialIcon ><Search onClick={handleSubmit} /></SocialIcon> */}
-                    <SocialIcon ><Search /></SocialIcon>
+                    <SocialIcon ><Search onClick={( ) => navigate(`/search?q=${q}`)}/></SocialIcon>
                 </SearchBox>
                 <SocialContainer>
                     <SocialIcon >
@@ -116,12 +118,12 @@ const Announcement = () => {
                         </a>
                     </SocialIcon>
 
-                    <SocialIcon>
+                    <SocialIcon onClick={handleClick}>
                         <Link to="/login"><Person /></Link>
                     </SocialIcon>
                     <Link to="/cart">
                         <SocialIcon>
-                            <Badge badgeContent={quantity} color="primary">
+                            <Badge overlap="rectangular" badgeContent={quantity} color="primary">
                                 <LocalMall />
                             </Badge>
                         </SocialIcon>
