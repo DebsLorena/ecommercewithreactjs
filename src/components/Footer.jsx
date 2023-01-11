@@ -143,7 +143,7 @@ const Footer = () => {
                     <Phone style={{ marginRight: "10px" }} /> 34 3245 8796
                 </ContactItem>
                 <ContactItem>
-                    <Phone style={{ marginRight: "10px" }} /><a href="https://wa.me/+5534984148815" target="_blank" rel="noreferrer"> 34 98414 8815</a>
+                    <Phone style={{ marginRight: "10px" }} /> <a href="https://wa.me/+5534984148815" target="_blank" rel="noreferrer"> 34 98414 8815</a>
                 </ContactItem>
                 <ContactItem>
                     <MailOutline style={{ marginRight: "10px" }} /> contact@enjoypaper@gmail.com

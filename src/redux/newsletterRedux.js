@@ -3,7 +3,7 @@ import { createSlice } from "@reduxjs/toolkit";
 export const newsletterSlice = createSlice({
     name: "newsletter",
     initialState: {
-        newsletters: [],
+        email: [],
         isFetching: false,
         error: false,
     },

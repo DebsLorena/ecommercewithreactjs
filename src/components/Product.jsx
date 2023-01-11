@@ -9,6 +9,7 @@ const Wrapper = styled.div`
     height: 100%;
     position: absolute;
     left: 0;
+    top: 0;
     background-color: rgba(0,0,0,0.2);
     z-index: 3;
     border-radius: 4px;
@@ -102,13 +103,19 @@ const Product = ({ item }) => {
             {/* <Link to={`/product/${item._id}`} style={{ textDecoration:"none" }} > */}
             <Circle/>
             <Image src={item.img}/>
-            <Wrapper> 
+            <Link to={`/product/${item._id}`} style={{ textDecoration:"none" }} >
+            <Wrapper > 
                 <Info>
                     <Icon >
                         <Link to={`/product/${item._id}`}> <LocalMall/> </Link>                        
                     </Icon>
                     <Icon>
-                        <Share />
+                        <a href={`https://api.whatsapp.com/send?text=http://localhost:3000/product/${item._id}`} target="_blank" rel="noreferrer" >
+                        <Share  />
+                        </a>
+                        {/* <a href={`https://api.whatsapp.com/send?text=http://www.enjoypaperepresentes.com.br`}></a>
+                        <Share  />
+                        </a> */}
                     </Icon>
                     <Icon>
                         <FavoriteBorderOutlined />
@@ -118,7 +125,7 @@ const Product = ({ item }) => {
                 <Link to={`/product/${item._id}`}><Price>{item.price}</Price></Link>
                 
             </Wrapper>
-            {/* </Link> */}
+            </Link>
         </Container>
         
     );

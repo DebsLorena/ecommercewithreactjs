@@ -54,21 +54,18 @@ const Button = styled.button`
     color: white;
 `;
 
+
 const Neswletter = () => {
 
-    const [inputs, setInputs] = useState({});
+    const [input, setInput] = useState("");
     const dispatch = useDispatch();
     // const history = useHistory();
     
     const handleClick = async e => {
         e.preventDefault();
-        // console.log(handleClick)
-        console.log(inputs)
 
-
-        
-        const email = {inputs};
-        addNewsletter(email, dispatch);
+        const email = input;
+        addNewsletter(dispatch, {email});
         // history.replace("/");
     }
 
@@ -77,7 +74,7 @@ const Neswletter = () => {
             <Title>Newsletter</Title>
             <Desc>Receba nossas promoções</Desc>
             <InputContainer>
-            <Input placeholder="Preencha o seu email" type="email" onChange={e => setInputs(e.target.value)} />
+            <Input placeholder="Preencha o seu email" type="email" onChange={e => setInput(e.target.value)}/>
             <Button onClick={handleClick}>
                 <Send />
             </Button>

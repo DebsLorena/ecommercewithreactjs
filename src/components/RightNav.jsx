@@ -32,7 +32,7 @@ const MenuItem = styled.div`
         width: 65%;
         top: 0;
         right: 0%;
-        transition: transform 0.3s ease-in-out;
+        transition: transform 0.3s ease-in-out; */
         p {
             width: 100%;
             font-size: 18px;

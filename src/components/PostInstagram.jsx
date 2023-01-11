@@ -1,15 +1,10 @@
 import React, { useState, useEffect, useRef } from "react";
 import styled from "styled-components";
 import { motion } from "framer-motion/dist/framer-motion";
-import image1 from "../img/insta/1.png";
-import image2 from "../img/insta/2.png";
-import image3 from "../img/insta/3.png";
-import image4 from "../img/insta/4.png";
-import image5 from "../img/insta/5.png";
-import image6 from "../img/insta/6.png";
-import image7 from "../img/insta/7.png";
-import image8 from "../img/insta/8.png";
+import axios from "axios";
+import dotenv from "dotenv";
 
+dotenv.config();
 
 const Container = styled.div`
     width: 100%;
@@ -45,12 +40,40 @@ const Wrapper = styled.div`
     position: relative;
     display: flex;
     cursor: grab;
-    img { pointer-events:none };
+    img { 
+        pointer-events:none;
+        width: 300px;
+    };
+    video {
+        pointer-events:none;
+        width: 300px;
+        height: 300px;
+        object-fit: cover;
+    };
 `;
 
-const image = [image1, image2, image3, image4, image5, image6, image7, image8]
+const IFeedItem = [
+    {   id: "string",
+        media_type: "IMAGE" | "VIDEO",
+        media_url: "string",
+        permalink: "string",
+    }
+]
 
 const PostInstagram = () => {
+
+    const [feedList, setFeedList] = useState(IFeedItem);
+    async function getInstaFeed() {
+        const token = process.env.REACT_APP_INSTA_TOKEN;
+        const fields = "media_url,media_type,permalink";
+        const url = `https://graph.instagram.com/me/media?access_token=${token}&fields=${fields}`;
+        const { data } = await axios.get(url);
+        setFeedList(data.data);
+    }
+    useEffect(() => {
+        getInstaFeed();
+    }, []);
+
 
     const carousel = useRef();
     const [width, setWidth] = useState(0)
@@ -65,11 +88,17 @@ const PostInstagram = () => {
             <SubTitle>@enjoypaper&presentes</SubTitle>
             <motion.div ref={carousel} whileTop={{ cursor: "grabbing" }}>
                 <motion.div drag="x"
-                    dragConstraints={{ right: 0, left: -width }} >
-                        <Wrapper>
-                        {image.map(image => (
-                            <motion.div key={image}>
-                                <img src={image} alt="insta" />
+                    dragConstraints={{ right: 0, left: -width }} > 
+                    <Wrapper>
+                        {feedList.map(item => (
+                            <motion.div>
+                            <a key={item._id}  href={item.permalink}  target="_blank">
+                                {item.media_type === "IMAGE" ? <img src={item.media_url} /> : (
+                                    <video controls>
+                                        <source src={item.media_url}></source>
+                                    </video>
+                                )}
+                            </a>
                             </motion.div>
                         ))}
                     </Wrapper>

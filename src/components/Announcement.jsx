@@ -18,7 +18,7 @@ const Container = styled.div`
     justify-content: center;
     @media (max-width: 480px){
         display: none;
-    }
+    };
 `;
 
 const Left = styled.div`
@@ -82,6 +82,7 @@ const Input = styled.input`
     };
 `;
 const Announcement = () => {
+
 
     const navigate = useNavigate();
     const quantity = useSelector(state => state.cart.quantity);
